@@ -1,0 +1,23 @@
+ja:
+  labels:
+    Add: 追加
+    Cancel: キャンセル
+    Delete: 削除
+    Edit: 編集
+    EmailAddress: メールアドレス
+    Login: ログイン
+    Logout: ログアウト
+    Name: 名前
+    Password: パスワード
+    Save: 保存
+    Search: 検索
+  messages:
+    logged_in: ログインしました
+    saved: 保存しました
+    system_error: システムエラーが発生しました。
+  admin:
+    influencers:
+      edit:
+        title: インフルエンサー編集
+      list:
+        title: インフルエンサー一覧

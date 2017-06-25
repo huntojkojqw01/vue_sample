@@ -1,24 +1,37 @@
-# README
+# Vueサンプルアプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 動かし方
 
-Things you may want to cover:
+* 以下のコマンドを実行
 
-* Ruby version
+```
+$ bundle install
+$ yarn install
+$ bundle exec rails db:migrate
+$ bundle exec rails db:seed_fu
+$ bundle exec foreman start
+```
 
-* System dependencies
+* http://localhost:3000/ にアクセスし、以下のアカウントでログイン
 
-* Configuration
+  メールアドレス: admin@example.com
 
-* Database creation
+  パスワード: admin
 
-* Database initialization
+## 未実装な機能
 
-* How to run the test suite
+* バリデーションエラー表示
 
-* Services (job queues, cache servers, search engines, etc.)
+## 問題点
 
-* Deployment instructions
+* 入力フィールド内でのenterで、submitできない
 
-* ...
+  element-ui の制限かも
+
+* リストの削除ボタンが動かせていない
+
+  クリックイベントがうまく動かない
+
+* URLと検索条件の同期ができてきない
+
+  クエリパラメータだけ変更した際のrouter.pushができない？

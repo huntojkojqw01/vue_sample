@@ -1,0 +1,23 @@
+en:
+  labels:
+    Add: Add
+    Cancel: Cancel
+    Delete: Delete
+    Edit: Edit
+    EmailAddress: Email address
+    Login: Login
+    Logout: Logout
+    Name: Name
+    Password: Password
+    Save: Save
+    Search: Search
+  messages:
+    logged_in: Successfully logged in
+    saved: Successfully saved
+    system_error: A system error has occurred.
+  admin:
+    influencers:
+      edit:
+        title: Edit Influencer
+      list:
+        title: Influencer List
