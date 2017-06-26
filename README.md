@@ -24,14 +24,12 @@ $ bundle exec foreman start
 
 ## 問題点
 
-* 入力フィールド内でのenterで、submitできない
-
-  element-ui の制限かも
-
-* リストの削除ボタンが動かせていない
-
-  クリックイベントがうまく動かない
-
 * URLと検索条件の同期ができてきない
 
   クエリパラメータだけ変更した際のrouter.pushができない？
+
+## 落とし穴
+
+* methods で以下のものは使えない気がする
+  * delete
+  * search

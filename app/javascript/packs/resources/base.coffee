@@ -42,7 +42,7 @@ class Base
     @_request("update", data: data)
 
   @delete: (data) ->
-    @_request("delete", data: data)
+    @_request("delete", data: { id: data.id })
 
   @isLoading: ->
     requests > 0
@@ -88,7 +88,6 @@ class Base
     Notification.error(message: Engine.i18n.t("messages.system_error"))
     if error.response.status == 401
       Auth.logout()
-      Engine.routes.push(name: "login")
     Observable.throw(error)
 
   @onCompleted: ->
@@ -108,5 +107,8 @@ class Base
 
   update: ->
     @constructor.update(@)
+
+  delete: ->
+    @constructor.delete(@)
 
 export default Base

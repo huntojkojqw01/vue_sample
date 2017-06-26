@@ -18,14 +18,16 @@
       performCommand: (command) ->
         switch command
           when "logout"
-            @logout()
-      logout: ->
-        @$auth.logout()
-        @$router.push(name: "login")
+            @$auth.logout()
   }
 </script>
 
 <style lang="sass" scoped>
   .navbar
     padding: 10px
+    background-color: #eef1f6
+
+  .el-dropdown-link:hover
+    cursor: pointer
+    color: #20a0ff // var(--color-primary)
 </style>

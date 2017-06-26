@@ -7,7 +7,7 @@
         el-form-item(:label="$t('labels.Password')")
           el-input(v-model="session.password", type="password")
         el-form-item
-          el-button(type="primary", @click="save") {{ $t("labels.Login") }}
+          el-button(type="primary", native-type="submit", @click="save") {{ $t("labels.Login") }}
 </template>
 
 <script lang="coffee">
@@ -17,7 +17,8 @@
     data: ->
       session: new Session()
     methods:
-      save: ->
+      save: (event) ->
+        event.preventDefault()
         @session.create().subscribe(
           (response) =>
             @$auth.login("admin", response.data)

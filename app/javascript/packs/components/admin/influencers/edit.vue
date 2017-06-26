@@ -8,7 +8,7 @@
       el-form-item(:label="$t('labels.EmailAddress')")
         el-input(v-model="influencer.email")
       el-form-item
-        el-button(type="primary", @click="save") {{ $t("labels.Save") }}
+        el-button(type="primary", native-type="submit", @click="save") {{ $t("labels.Save") }}
 </template>
 
 <script lang="coffee">
@@ -18,7 +18,8 @@
     data: ->
       influencer: new Influencer()
     methods:
-      save: ->
+      save: (event) ->
+        event.preventDefault()
         @influencer.save().subscribe(
           (response) =>
             @$notify.success(message: @$i18n.t("messages.saved"))

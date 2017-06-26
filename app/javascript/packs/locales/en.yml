@@ -12,6 +12,7 @@ en:
     Save: Save
     Search: Search
   messages:
+    deleted: Successfully deleted
     logged_in: Successfully logged in
     saved: Successfully saved
     system_error: A system error has occurred.

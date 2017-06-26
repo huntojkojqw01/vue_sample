@@ -21,7 +21,7 @@ class Engine
     @apiEndpoint = options.apiEndpoint || "http://localhost:3000/api"
 
     Vue.use(VueRouter)
-    @routes = new VueRouter(
+    @router = new VueRouter(
       mode:   "history"
       base:   options.base || "/"
       routes: options.routes
@@ -48,6 +48,6 @@ class Engine
 
     Vue.component("icon", Icon)
 
-    Vue.use(Auth, routes: @routes)
+    Vue.use(Auth, router: @router)
 
 export default new Engine()

@@ -32,6 +32,11 @@ module Api
         end
       end
 
+      def destroy
+        ::Influencer.destroy(params[:id])
+        head :ok
+      end
+
       private
 
       def filter(records)
@@ -44,7 +49,7 @@ module Api
 
       def sort(records)
         order_params = params[:sort].to_s.split(",").map do |sort|
-          [ sort.delete("-"), sort.start_with?("-") ? :desc : :asc]
+          [sort.delete("-"), sort.start_with?("-") ? :desc : :asc]
         end.to_h
         records.order(order_params)
       end

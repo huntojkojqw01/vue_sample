@@ -8,7 +8,7 @@
       el-form-item(:label="$t('labels.EmailAddress')")
         el-input(v-model="queryParams.filter.email")
       el-form-item
-        el-button(type="primary", @click="query") {{ $t("labels.Search") }}
+        el-button(type="primary", native-type="submit", @click="query") {{ $t("labels.Search") }}
 
     el-button(@click="add") {{ $t("labels.Add") }}
 
@@ -21,7 +21,7 @@
 
     el-table(:data="influencers",
         v-loading.body="isLoading()",
-        :default-sort = "{ prop: 'name', order: 'ascending' }"
+        :default-sort = "{ prop: 'name', order: 'ascending' }",
         @selection-change="changeSelection",
         @sort-change="changeSort")
 
@@ -38,7 +38,7 @@
       el-table-column(fixed="right", width="150")
         template(scope="scope")
           el-button(@click="edit(scope.row)", size="small") {{ $t("labels.Edit") }}
-          el-button(@click="delete(scope.row)", type="danger", size="small") {{ $t("labels.Delete") }}
+          el-button(@click="remove(scope.row)", type="danger", size="small") {{ $t("labels.Delete") }}
 
     el-pagination(layout="sizes, prev, pager, next",
         :page-sizes="queryParams.pageSizes",
@@ -59,7 +59,8 @@
       influencers: []
       selection:   []
     methods:
-      query: ->
+      query: (event = null) ->
+        event?.preventDefault()
         Influencer.query(@queryParams.toQuery()).subscribe(
           (response) =>
             @count = response.meta.count
@@ -69,8 +70,12 @@
         @$router.push(name: "new influencer")
       edit: (influencer) ->
         @$router.push(name: "edit influencer", params: { id: influencer.id })
-      delete: (influencer) ->
-        console.log influencer
+      remove: (influencer) ->
+        influencer.delete().subscribe(
+          =>
+            @$notify.success(message: @$i18n.t("messages.deleted"))
+            @query()
+        )
       changeSort: (sort) ->
         @queryParams.setSort(sort)
         @query()

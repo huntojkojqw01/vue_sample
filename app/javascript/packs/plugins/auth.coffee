@@ -2,15 +2,16 @@ class Auth
   constructor: ->
     @key = "auth"
 
-  install: (@Vue, @options) ->
+  install: (@Vue, options) ->
+    @router = options.router
     @Vue.prototype.$auth = @
-    @options.routes.beforeEach (to, from, next) =>
+    @router.beforeEach (to, from, next) =>
       if @_authorized(to)
         next()
       else
         next(name: "login")
 
-  isLoggedIn: (type = null) ->
+  isLoggedIn: (type) ->
     @_auth()?.type == type
 
   login: (type, data) ->
@@ -19,6 +20,7 @@ class Auth
 
   logout: ->
     localStorage.removeItem(@key)
+    @router.push(name: "login")
 
   token: ->
     @_auth()?.token

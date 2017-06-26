@@ -12,6 +12,7 @@ ja:
     Save: 保存
     Search: 検索
   messages:
+    deleted: 削除しました
     logged_in: ログインしました
     saved: 保存しました
     system_error: システムエラーが発生しました。

@@ -10,6 +10,6 @@ new Vue(
   el:         "#app"
   template:   "<Layout/>"
   components: { Layout }
-  router:     Engine.routes
+  router:     Engine.router
   i18n:       Engine.i18n
 )
