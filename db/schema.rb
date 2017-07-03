@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170624010148) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "influencers", force: :cascade do |t|
     t.string "name", null: false
     t.string "email"
